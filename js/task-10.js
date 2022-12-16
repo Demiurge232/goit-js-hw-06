@@ -1,6 +1,7 @@
 const createBtn = document.querySelector('button[data-create]');
 const destroyBtn = document.querySelector('button[data-destroy]');
 const boxesEl = document.querySelector('#boxes');
+const inputEl = document.querySelector('input');
 
 const divBoxes = [];
 let width = 20;
@@ -10,15 +11,13 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-function createBoxes(amount) {
-  const inputEl = document.querySelector('input');
-  amount = inputEl.value;
-  if (amount > 100 || amount <= 0) {
+function createBoxes() {
+  if (Number(inputEl.value) > 100 || Number(inputEl.value) <= 0) {
     alert('Ведіть число в межах від 1–100!!!');
     return;
   }
 
-  for (let i = 1; i <= amount; i += 1) {
+  for (let i = 1; i <= Number(inputEl.value); i += 1) {
     const div = document.createElement('div');
     div.style.backgroundColor = getRandomHexColor();
     width += 10;
